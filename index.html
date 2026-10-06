@@ -4,16 +4,230 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Water Eject &amp; Speaker Cleaner</title>
-<meta http-equiv="refresh" content="0; url=privacy-policy.html">
-<link rel="canonical" href="privacy-policy.html">
+<meta name="description" content="Water Eject & Speaker Cleaner by CoreByteLabs helps push water and loose dust out of your phone speaker using sound waves and vibration. Works offline. No subscription.">
+<meta name="theme-color" content="#0a1a3a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1a3a'/%3E%3Cpath d='M32 14C32 14 21 27 21 35a11 11 0 0 0 22 0c0-8-11-21-11-21z' fill='%233cdcff'/%3E%3C/svg%3E">
 <style>
-  body { margin: 0; padding: 40px 16px; font: 16px/1.6 -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-         background: #f6f8fb; color: #1d2433; text-align: center; }
-  a { color: #0a7fb8; }
-  @media (prefers-color-scheme: dark) { body { background: #0b1426; color: #e6ebf3; } a { color: #3cc6ff; } }
+  :root {
+    --bg: #07122b;
+    --bg2: #0b1a3a;
+    --card: rgba(255,255,255,.04);
+    --line: rgba(120,200,255,.14);
+    --text: #e8eef8;
+    --muted: #9fb0c8;
+    --cyan: #3cdcff;
+    --teal: #4ff0d2;
+    --glow: rgba(60,220,255,.35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(900px 500px at 50% -10%, rgba(60,220,255,.18), transparent 60%),
+      linear-gradient(180deg, var(--bg2), var(--bg) 60%);
+    background-color: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+  }
+  a { color: var(--cyan); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  /* Nav */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .01em; color: var(--text); text-decoration: none; }
+  .brand svg { width: 32px; height: 32px; }
+  nav .links a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: 15px; }
+  nav .links a:hover { color: var(--text); }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 48px 0 64px; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+             color: var(--teal); background: rgba(79,240,210,.08); border: 1px solid rgba(79,240,210,.25);
+             padding: 4px 12px; border-radius: 999px; margin-bottom: 18px; }
+  h1 { font-size: clamp(34px, 5.4vw, 56px); line-height: 1.08; margin: 0 0 18px; letter-spacing: -.02em; }
+  h1 span { background: linear-gradient(90deg, var(--cyan), var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { font-size: 18px; color: var(--muted); margin: 0 0 28px; max-width: 520px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 12px; font-weight: 600;
+         text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: linear-gradient(90deg, var(--cyan), var(--teal)); color: #04223a; box-shadow: 0 8px 28px var(--glow); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); background: var(--card); }
+  .btn svg { width: 20px; height: 20px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; padding: 0; list-style: none; }
+  .pills li { font-size: 14px; color: var(--text); background: var(--card); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; }
+  .pills li::before { content: "✓ "; color: var(--teal); font-weight: 700; }
+
+  /* Hero art */
+  .art { position: relative; display: grid; place-items: center; aspect-ratio: 1; max-width: 400px; width: 100%; margin: 0 auto; }
+  .art .ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(60,220,255,.22); animation: pulse 3.2s ease-out infinite; }
+  .art .ring:nth-child(2) { animation-delay: 1.06s; }
+  .art .ring:nth-child(3) { animation-delay: 2.13s; }
+  .art svg { width: 62%; filter: drop-shadow(0 0 30px var(--glow)); animation: bob 4s ease-in-out infinite; }
+  @keyframes pulse { 0% { transform: scale(.45); opacity: .9; } 100% { transform: scale(1.05); opacity: 0; } }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  /* Sections */
+  section { padding: 56px 0; }
+  h2 { font-size: clamp(26px, 3.6vw, 36px); margin: 0 0 10px; letter-spacing: -.01em; text-align: center; }
+  .sub { color: var(--muted); text-align: center; margin: 0 auto 36px; max-width: 600px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+  .card .ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-size: 22px;
+               background: linear-gradient(135deg, rgba(60,220,255,.18), rgba(79,240,210,.08)); border: 1px solid var(--line); margin-bottom: 14px; }
+  .card h3 { margin: 0 0 6px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; position: relative; }
+  .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+                  background: linear-gradient(90deg, var(--cyan), var(--teal)); color: #04223a; font-weight: 800; margin-bottom: 12px; }
+  .step h3 { margin: 0 0 6px; font-size: 17px; }
+  .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Promise */
+  .promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .promise .card { text-align: center; }
+  .promise .big { font-size: 26px; font-weight: 800; background: linear-gradient(90deg, var(--cyan), var(--teal));
+                  -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .note { max-width: 760px; margin: 0 auto; background: rgba(255,200,80,.06); border: 1px solid rgba(255,200,80,.25);
+          border-radius: 16px; padding: 18px 20px; color: var(--muted); font-size: 15px; }
+  .note strong { color: #ffd479; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+  footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  footer a { color: var(--muted); margin-right: 16px; }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 24px; }
+    .lead { margin-left: auto; margin-right: auto; }
+    .cta, .pills { justify-content: center; }
+    .art { max-width: 280px; grid-row: 1; }
+    .grid, .promise { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 540px) {
+    nav .links a:not(:last-child) { display: none; }
+    .grid, .promise, .steps { grid-template-columns: 1fr; }
+    section { padding: 40px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .art .ring, .art svg { animation: none; }
+    .art .ring { display: none; }
+  }
 </style>
 </head>
 <body>
-  <p>Opening the Privacy Policy… <a href="privacy-policy.html">Click here</a> if it doesn't open.</p>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="drop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8ff0ff"/>
+      <stop offset="1" stop-color="#1fb6e8"/>
+    </linearGradient>
+    <symbol id="logo" viewBox="0 0 120 120">
+      <path d="M60 22C60 22 38 48 38 64a22 22 0 0 0 44 0c0-16-22-42-22-42z" fill="url(#drop)"/>
+      <path d="M50 58c-3 5-4 9-3 14" stroke="#fff" stroke-opacity=".75" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <path d="M28 46a30 30 0 0 0 0 36M18 38a42 42 0 0 0 0 52" stroke="#4ff0d2" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M92 46a30 30 0 0 1 0 36M102 38a42 42 0 0 1 0 52" stroke="#4ff0d2" stroke-width="5" stroke-linecap="round" fill="none"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#">
+      <svg><use href="#logo"/></svg>
+      CoreByteLabs
+    </a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="privacy-policy.html">Privacy</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="eyebrow">Free Android app</span>
+      <h1>Water Eject &amp; <span>Speaker Cleaner</span></h1>
+      <p class="lead">Muffled sound after water or dust got in? Our app plays special cleaning tones and vibrations that help push water and loose dust out of your phone speaker.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.watereject.speakercleaner">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2.5v19l10-9.5L4 2.5zm11.4 10.9 2.6 2.5-11 6.3 8.4-8.8zm0-2.8L7 1.8l11 6.3-2.6 2.5zm3.6-1.8 3 1.7c.8.5.8 1.5 0 2l-3 1.7-2.8-2.7L19 8.8z"/></svg>
+          Get it on Google Play
+        </a>
+        <a class="btn btn-ghost" href="#features">See features</a>
+      </div>
+      <ul class="pills">
+        <li>Works offline</li>
+        <li>No subscription</li>
+        <li>No account</li>
+        <li>No data collected</li>
+      </ul>
+    </div>
+    <div class="art" aria-hidden="true">
+      <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+      <svg viewBox="0 0 120 120"><use href="#logo"/></svg>
+    </div>
+  </header>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Everything your speaker needs</h2>
+    <p class="sub">Simple tools, honest results, and no tricks.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">💧</div><h3>Water Eject</h3><p>A low 165 Hz tone vibrates the speaker to help push trapped water out of the grill.</p></div>
+      <div class="card"><div class="ico">🌪️</div><h3>Dust Cleaner</h3><p>A frequency sweep with pulses helps shake loose dust out of the speaker mesh.</p></div>
+      <div class="card"><div class="ico">📳</div><h3>Vibration Mode</h3><p>Sound and phone vibration work together for stubborn water drops.</p></div>
+      <div class="card"><div class="ico">⚡</div><h3>Auto Clean</h3><p>One tap runs water, dust and vibration cycles in a row.</p></div>
+      <div class="card"><div class="ico">📞</div><h3>Earpiece Cleaner</h3><p>Clean the top call speaker too, not just the bottom one.</p></div>
+      <div class="card"><div class="ico">🎧</div><h3>Speaker Test</h3><p>Test left and right speakers, or play any custom frequency.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How to use it</h2>
+    <p class="sub">Takes less than a minute.</p>
+    <div class="steps">
+      <div class="step"><h3>Remove the case</h3><p>Take off the phone cover so water can get out freely.</p></div>
+      <div class="step"><h3>Volume to max</h3><p>The app reminds you and helps set the volume.</p></div>
+      <div class="step"><h3>Speaker facing down</h3><p>Hold the phone so gravity helps the water drip out.</p></div>
+      <div class="step"><h3>Start cleaning</h3><p>Tap Start and repeat a few times if the sound is still muffled.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Built to be safe</h2>
+    <p class="sub">We care about your speaker as much as you do.</p>
+    <div class="promise">
+      <div class="card"><div class="big">1.5 s</div><p>Soft fade-in, so the speaker is never hit by sudden full power.</p></div>
+      <div class="card"><div class="big">Time limits</div><p>Safe cycle lengths with rest breaks to avoid overheating.</p></div>
+      <div class="card"><div class="big">100% local</div><p>Tones are generated on your phone. Nothing is recorded or sent.</p></div>
+    </div>
+    <p class="note" style="margin-top:24px"><strong>Please note:</strong> the app uses sound vibrations to help remove water and loose dust. It can't repair hardware damage. For serious water damage, please visit a repair center.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>&copy; 2026 CoreByteLabs</div>
+    <div>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:corebytelabs84@gmail.com">corebytelabs84@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
